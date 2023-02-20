@@ -1,9 +1,10 @@
 #!/usr/bin/env bash
 
-if [ -f $1/.buildpacks ]; then
-  echo "Multipack"
-  exit 0
-else
-  echo "no .buildpacks file"
+if [ -z "$BUILDPACK_URLS" ]
+then
+  echo "Buildpack env var is empty"
   exit 1
+else
+  echo "Multipack $BUILDPACK_URLS"
+  exit 0
 fi
